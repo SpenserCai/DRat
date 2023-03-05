@@ -1,0 +1,7 @@
+{
+    "TELBOT_TOKEN":"",
+    "TELBOT_CHAT_ID":0,
+    "CLASH_CONN_STR":"",
+    "LOCAL_PROXY_PORT":0,
+    "ENS_DOMAIN":""
+}
