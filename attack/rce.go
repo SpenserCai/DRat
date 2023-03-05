@@ -3,7 +3,7 @@
  * @Date: 2023-03-01 10:07:41
  * @version:
  * @LastEditors: SpenserCai
- * @LastEditTime: 2023-03-05 21:31:56
+ * @LastEditTime: 2023-03-05 22:06:44
  * @Description: file content
  */
 package attack
@@ -55,11 +55,17 @@ func (rce *DRce) Init() error {
 			break
 		}
 		output += string(buf[:n])
-		if string(buf[n-1]) == ">" {
+		if runtime.GOOS == "windows" && string(buf[n-1]) == ">" {
+			break
+		} else if runtime.GOOS != "windows" && strings.Contains(output, "$") {
 			break
 		}
 	}
-	fmt.Println(DRatUtil.ConvertByte2String([]byte(output), DRatUtil.GB18030))
+	if runtime.GOOS == "windows" {
+		fmt.Println(DRatUtil.ConvertByte2String([]byte(output), DRatUtil.GB18030))
+	} else {
+		fmt.Println(output)
+	}
 	rce.Status = true
 	return nil
 }
@@ -79,7 +85,9 @@ func (rce *DRce) Run(cmd string) (string, error) {
 			break
 		}
 		output += string(buf[:n])
-		if string(buf[n-1]) == ">" {
+		if runtime.GOOS == "windows" && string(buf[n-1]) == ">" {
+			break
+		} else if runtime.GOOS != "windows" && strings.Contains(output, "$") {
 			break
 		}
 	}
@@ -87,6 +95,15 @@ func (rce *DRce) Run(cmd string) (string, error) {
 	if runtime.GOOS == "windows" {
 		// 转换编码
 		output = DRatUtil.ConvertByte2String([]byte(output), DRatUtil.GB18030)
+		// 如果第一行是命令本身，那么就去掉
+		// 读取第一行
+		firstLine := strings.Split(output, "\n")[0]
+		// 判断第一行是否是命令本身
+		if strings.Contains(firstLine, cmd) {
+			// 去掉第一行
+			output = strings.Join(strings.Split(output, "\n")[1:], "\n")
+		}
+	} else {
 		// 如果第一行是命令本身，那么就去掉
 		// 读取第一行
 		firstLine := strings.Split(output, "\n")[0]
