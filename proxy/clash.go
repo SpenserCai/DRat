@@ -3,7 +3,7 @@
  * @Date: 2023-02-23 17:29:55
  * @version:
  * @LastEditors: SpenserCai
- * @LastEditTime: 2023-03-05 21:25:32
+ * @LastEditTime: 2023-03-06 14:22:40
  * @Description: file content
  */
 package proxy
@@ -28,6 +28,10 @@ func RunClashClient() {
 	clashType := clashConfig[0]
 	clashServer := clashConfig[1]
 	clashPort, err := strconv.Atoi(clashConfig[2])
+	if err != nil {
+		fmt.Println("clashFormat error: ", err)
+		return
+	}
 	clashCipher := clashConfig[3]
 	clashPassword := clashConfig[4]
 	clashUDP, err := strconv.ParseBool(clashConfig[5])

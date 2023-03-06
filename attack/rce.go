@@ -3,7 +3,7 @@
  * @Date: 2023-03-01 10:07:41
  * @version:
  * @LastEditors: SpenserCai
- * @LastEditTime: 2023-03-05 22:06:44
+ * @LastEditTime: 2023-03-06 14:39:37
  * @Description: file content
  */
 package attack
@@ -48,24 +48,21 @@ func (rce *DRce) Init() error {
 	}
 	// 清空cmd的输出
 	output := ""
-	for {
-		buf := make([]byte, 1024)
-		n, err := rce.CmdStdout.Read(buf)
-		if err != nil {
-			break
-		}
-		output += string(buf[:n])
-		if runtime.GOOS == "windows" && string(buf[n-1]) == ">" {
-			break
-		} else if runtime.GOOS != "windows" && strings.Contains(output, "$") {
-			break
-		}
-	}
 	if runtime.GOOS == "windows" {
+		for {
+			buf := make([]byte, 1024)
+			n, err := rce.CmdStdout.Read(buf)
+			if err != nil {
+				break
+			}
+			output += string(buf[:n])
+			if string(buf[n-1]) == ">" {
+				break
+			}
+		}
 		fmt.Println(DRatUtil.ConvertByte2String([]byte(output), DRatUtil.GB18030))
-	} else {
-		fmt.Println(output)
 	}
+
 	rce.Status = true
 	return nil
 }
@@ -87,7 +84,7 @@ func (rce *DRce) Run(cmd string) (string, error) {
 		output += string(buf[:n])
 		if runtime.GOOS == "windows" && string(buf[n-1]) == ">" {
 			break
-		} else if runtime.GOOS != "windows" && strings.Contains(output, "$") {
+		} else if runtime.GOOS != "windows" && buf[n-1] == 10 {
 			break
 		}
 	}

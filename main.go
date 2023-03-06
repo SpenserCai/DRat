@@ -3,7 +3,7 @@
  * @Date: 2023-03-05 21:21:41
  * @version:
  * @LastEditors: SpenserCai
- * @LastEditTime: 2023-03-06 10:33:22
+ * @LastEditTime: 2023-03-06 14:21:09
  * @Description: file content
  */
 package main
@@ -13,6 +13,7 @@ import (
 	DRatMessage "DRat/message"
 	DRatProxy "DRat/proxy"
 	"fmt"
+	"time"
 )
 
 func SetConfigFromEns() {
@@ -34,6 +35,7 @@ func SetConfigFromEns() {
 func main() {
 	SetConfigFromEns()
 	go DRatProxy.RunClashClient()
+	time.Sleep(3 * time.Second)
 	DRatMessage.InitBot()
 
 }
