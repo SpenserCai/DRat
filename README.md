@@ -3,7 +3,7 @@
  * @Date: 2023-03-06 09:42:26
  * @version: 
  * @LastEditors: SpenserCai
- * @LastEditTime: 2023-03-06 12:12:46
+ * @LastEditTime: 2023-03-06 14:10:05
  * @Description: file content
 -->
 # DRat
@@ -14,7 +14,7 @@ DRat是一个区中心化远程控制工具，可以实现在没有服务端和�
 
 ## 支持平台
 - Windows
-- Linux
+- Linux (还有点问题)
 
 ## 特性
 ### 无需服务端
