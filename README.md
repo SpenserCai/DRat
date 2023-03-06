@@ -3,11 +3,11 @@
  * @Date: 2023-03-06 09:42:26
  * @version: 
  * @LastEditors: SpenserCai
- * @LastEditTime: 2023-03-06 14:44:13
+ * @LastEditTime: 2023-03-06 17:47:24
  * @Description: file content
 -->
 # DRat
-去中心化远控控制工具（Decentralized Remote Administration Tool）
+去中心化远程控制工具（Decentralized Remote Administration Tool）
 
 ## 介绍
 DRat是一个去中心化远程控制工具，可以实现在没有服务端和配置文件服务器的情况下实现远程控制和配置下发。
