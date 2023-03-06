@@ -3,7 +3,7 @@ Author: SpenserCai
 Date: 2023-03-05 22:16:51
 version: 
 LastEditors: SpenserCai
-LastEditTime: 2023-03-05 22:22:52
+LastEditTime: 2023-03-06 10:30:59
 Description: file content
 '''
 import json
@@ -40,6 +40,7 @@ if __name__ == '__main__':
     os.system('go mod tidy')
     # 设置环境变量 CGO_ENABLED=1
     os.environ['CGO_ENABLED'] = '1'
+    os.environ['GOARCH'] = '386'
     # 通过第三个参数判断是windows还是linux
     if sys.argv[3] == "windows":
         os.environ['GOOS'] = 'windows'
@@ -56,6 +57,9 @@ if __name__ == '__main__':
     config_str = config_str[1:]
     with open('config/config.go', 'w',encoding="utf8") as f:
         f.write(config_str)
+    # 如果release目录不存在，则创建
+    if not os.path.exists("release"):
+        os.mkdir("release")
     # 把生成的可执行文件拷贝到release目录下
     if sys.argv[3] == "windows":
         os.system('copy DRat.exe release\\DRat.exe')
