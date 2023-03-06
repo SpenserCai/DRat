@@ -19,7 +19,7 @@ import (
 	tele "gopkg.in/telebot.v3"
 )
 
-func InitBot(isSpy bool) {
+func InitBot() {
 	// 机器人被@时的回复
 	teleBotSettings := tele.Settings{
 		Token:  DRatConfig.TELBOT_TOKEN,
@@ -41,9 +41,7 @@ func InitBot(isSpy bool) {
 		return
 	}
 	DRatConfig.TelBot = tempBot
-	if isSpy {
-		TeleBotCommand()
-	}
+	TeleBotCommand()
 }
 
 // 发送纯文本消息

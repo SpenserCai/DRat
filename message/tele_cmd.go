@@ -3,7 +3,7 @@
  * @Date: 2023-03-05 21:40:21
  * @version:
  * @LastEditors: SpenserCai
- * @LastEditTime: 2023-03-05 21:52:45
+ * @LastEditTime: 2023-03-06 10:35:58
  * @Description: file content
  */
 package message
@@ -92,4 +92,7 @@ func TeleBotCommand() {
 		}
 
 	})
+
+	DRatConfig.TelBot.Send(tele.ChatID(-DRatConfig.TELBOT_CHAT_ID), "DRat Online!")
+	DRatConfig.TelBot.Start()
 }

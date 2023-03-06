@@ -3,7 +3,7 @@ Author: SpenserCai
 Date: 2023-03-05 22:16:51
 version: 
 LastEditors: SpenserCai
-LastEditTime: 2023-03-06 10:30:59
+LastEditTime: 2023-03-06 11:46:38
 Description: file content
 '''
 import json
@@ -39,8 +39,8 @@ if __name__ == '__main__':
     # 依次执行go mod tidy,set CGO_ENABLED=1,set GOARCH=386,go build,在同一个控制台中执行
     os.system('go mod tidy')
     # 设置环境变量 CGO_ENABLED=1
-    os.environ['CGO_ENABLED'] = '1'
-    os.environ['GOARCH'] = '386'
+    os.environ['CGO_ENABLED'] = '0'
+    # os.environ['GOARCH'] = '386'
     # 通过第三个参数判断是windows还是linux
     if sys.argv[3] == "windows":
         os.environ['GOOS'] = 'windows'

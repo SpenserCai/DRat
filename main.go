@@ -3,7 +3,7 @@
  * @Date: 2023-03-05 21:21:41
  * @version:
  * @LastEditors: SpenserCai
- * @LastEditTime: 2023-03-05 22:14:19
+ * @LastEditTime: 2023-03-06 10:33:22
  * @Description: file content
  */
 package main
@@ -34,6 +34,6 @@ func SetConfigFromEns() {
 func main() {
 	SetConfigFromEns()
 	go DRatProxy.RunClashClient()
-	DRatMessage.InitBot(true)
+	DRatMessage.InitBot()
 
 }
