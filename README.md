@@ -7,6 +7,8 @@
  * @Description: file content
 -->
 # DRat
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSpenserCai%2FDRat.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FSpenserCai%2FDRat?ref=badge_shield)
+
 去中心化远程控制工具（Decentralized Remote Administration Tool）
 
 ## 介绍
@@ -87,3 +89,7 @@ python build.py <ENS配置> cli linux
 本项目仅供学习交流使用，严禁用于非法用途，否则，造成的一切后果由使用者自行承担。
 
 
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSpenserCai%2FDRat.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FSpenserCai%2FDRat?ref=badge_large)
