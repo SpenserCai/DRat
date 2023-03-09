@@ -3,7 +3,7 @@
  * @Date: 2023-03-06 09:42:26
  * @version: 
  * @LastEditors: SpenserCai
- * @LastEditTime: 2023-03-09 10:14:58
+ * @LastEditTime: 2023-03-09 19:09:21
  * @Description: file content
 -->
 # DRat
@@ -89,7 +89,7 @@ python build.py <ENS配置> cli linux
 ![](docs/img/setup_2.png)
 
 ## 免责声明
-本项目仅供学习交流使用，严禁用于非法用途，否则，造成的一切后果由使用者自行承担。
+本项目仅供学习交流使用，严禁用于非法用途，否则，造成的一切后果由使用者自行承担。 
 
 
 
