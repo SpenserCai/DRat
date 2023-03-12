@@ -3,7 +3,7 @@
  * @Date: 2023-03-06 09:42:26
  * @version: 
  * @LastEditors: SpenserCai
- * @LastEditTime: 2023-03-09 19:09:21
+ * @LastEditTime: 2023-03-12 21:56:45
  * @Description: file content
 -->
 # DRat
@@ -28,6 +28,27 @@ DRat是一个去中心化远程控制工具，可以实现在没有服务端和�
 
 ### ENS配置下发
 基于去中心化的ENS，可以实现配置文件的下发。
+
+## 功能列表
+<!--一个表格来展示:命令 功能 状态-->
+| 命令 | 功能 | 状态 |
+| :---: | :---: | :---: |
+| /help | 帮助 | ✔ |
+| /rce start | 开启rce会话 | ✔ |
+| /rce stop | 停止rce会话 | ✔ |
+| /rce <命令> | 执行命令,如果执行命令前没有开启rce会话则会自动开启 | ✔ |
+| /sysinfo | 获取系统信息 | ✔ |
+| /restart_drat | 重启drat | ✔ |
+| /shutdown_drat | 关闭drat | ✔ |
+| /dump_navicat | 导出navicat连接信息 | ✖ |
+| /dump_xshell | 导出xshell连接信息 | ✖ |
+| /dump_browser | 导出浏览器密码 | ✖ |
+| /download <文件路径> | 下载文件 | ✖ |
+| /upload <文件路径> | 上传文件 | ✖ |
+| /wechat info | 获取微信信息 | ✖ |
+| /wechat history | 聊天记录和通讯录 | ✖ |
+
+**$\color{red}{如果还有别的需求，可以提交issue}$**
 
 ## 使用
 ### 获取
