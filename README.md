@@ -3,7 +3,7 @@
  * @Date: 2023-03-06 09:42:26
  * @version: 
  * @LastEditors: SpenserCai
- * @LastEditTime: 2023-03-12 21:56:45
+ * @LastEditTime: 2023-03-12 22:03:21
  * @Description: file content
 -->
 # DRat
@@ -61,10 +61,7 @@ git clone https://github.com/SpenserCai/DRat.git
 3. 将MetaMask的网络切换到Goerli 测试网络。
 4. 在[ENS](https://app.ens.domains/)中注册域名，请使用8位的域名
 
-### 生成配置文件
-```bash
-python encode_config.py <配置文件路径> <ENS域名(不包含.eth)>
-```
+### 配置文件
 配置文件的格式如下
 ```json
 {
@@ -75,15 +72,20 @@ python encode_config.py <配置文件路径> <ENS域名(不包含.eth)>
     "ENS_DOMAIN":""// 后期这里会支持更新ENS域名，现在不支持
 }
 ```
-### 下发配置文件
+
+### 自动上传配置文件
+为了更加方便的完成配置文件的上传，我开发了[DRatConfig工具](https://github.com/SpenserCai/DRatConfig)，可以自行完成加密和上传，前提只需要注册好一个eth域名即可
+
+### 手动上传配置文件
+```bash
+python encode_config.py <配置文件路径> <ENS域名(不包含.eth)>
+```
 生成后会得到一个AES加密好的字符串，将其复制粘贴到ENS域名的description中，可以访问：https://app.ens.domains/name/你的域名/details 编辑。
 
 ![](docs/img/setup_1.png)
 
 点击保存，等待一段时间，即可完成配置文件的下发。
 
-### 自动上传配置文件
-为了更加方便的完成配置文件的上传，我开发了[DRatConfig工具](https://github.com/SpenserCai/DRatConfig)，可以自行完成加密和上传，前提只需要注册好一个eth域名即可
 
 ### 编译
 ```bash
