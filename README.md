@@ -3,7 +3,7 @@
  * @Date: 2023-03-06 09:42:26
  * @version: 
  * @LastEditors: SpenserCai
- * @LastEditTime: 2023-03-12 22:03:21
+ * @LastEditTime: 2023-03-12 22:06:28
  * @Description: file content
 -->
 # DRat
@@ -72,11 +72,12 @@ git clone https://github.com/SpenserCai/DRat.git
     "ENS_DOMAIN":""// 后期这里会支持更新ENS域名，现在不支持
 }
 ```
+对于配置文件的上传有两种方案
 
-### 自动上传配置文件
+#### 1. 自动上传配置文件
 为了更加方便的完成配置文件的上传，我开发了[DRatConfig工具](https://github.com/SpenserCai/DRatConfig)，可以自行完成加密和上传，前提只需要注册好一个eth域名即可
 
-### 手动上传配置文件
+#### 2. 手动上传配置文件
 ```bash
 python encode_config.py <配置文件路径> <ENS域名(不包含.eth)>
 ```
