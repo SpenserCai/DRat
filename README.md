@@ -3,7 +3,7 @@
  * @Date: 2023-03-06 09:42:26
  * @version: 
  * @LastEditors: SpenserCai
- * @LastEditTime: 2023-03-13 09:29:21
+ * @LastEditTime: 2023-03-13 10:16:18
  * @Description: file content
 -->
 # DRat
@@ -48,7 +48,7 @@ DRat是一个去中心化远程控制工具，可以实现在没有服务端和�
 | /wechat info | 获取微信信息 | ✖ |
 | /wechat history | 聊天记录和通讯录 | ✖ |
 
-<font color="red">如果还有别的需求，可以提交issue</font>
+如果还有别的需求，可以提交issue
 
 ## 使用
 ### 获取
