@@ -3,12 +3,13 @@ Author: SpenserCai
 Date: 2023-03-05 22:16:51
 version: 
 LastEditors: SpenserCai
-LastEditTime: 2023-03-06 11:46:38
+LastEditTime: 2023-03-13 22:11:32
 Description: file content
 '''
 import json
 import sys
 import os
+import platform
 
 TMP = '''
 package config
@@ -61,7 +62,13 @@ if __name__ == '__main__':
     if not os.path.exists("release"):
         os.mkdir("release")
     # 把生成的可执行文件拷贝到release目录下
-    if sys.argv[3] == "windows":
-        os.system('copy DRat.exe release\\DRat.exe')
+    if platform.system().lower() == 'windows':
+        if sys.argv[3] == "windows":
+            os.system('copy DRat.exe release\\DRat.exe')
+        else:
+            os.system('copy DRat release\\DRat')
     else:
-        os.system('cp DRat release/DRat')
+        if sys.argv[3] == "windows":
+            os.system('cp DRat.exe release/DRat.exe')
+        else:
+            os.system('cp DRat release/DRat')
