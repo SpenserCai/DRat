@@ -3,7 +3,7 @@
  * @Date: 2023-03-06 09:42:26
  * @version: 
  * @LastEditors: SpenserCai
- * @LastEditTime: 2023-03-13 10:16:18
+ * @LastEditTime: 2023-03-14 09:17:41
  * @Description: file content
 -->
 # DRat
@@ -43,7 +43,7 @@ DRat是一个去中心化远程控制工具，可以实现在没有服务端和�
 | /dump_navicat | 导出navicat连接信息 | ✖ |
 | /dump_xshell | 导出xshell连接信息 | ✖ |
 | /dump_browser | 导出浏览器密码 | ✖ |
-| /download <文件路径> | 下载文件 | ✖ |
+| /download <匿名网盘Token> <文件路径> | 下载文件 | ✖ |
 | /upload <文件路径> | 上传文件 | ✖ |
 | /wechat info | 获取微信信息 | ✖ |
 | /wechat history | 聊天记录和通讯录 | ✖ |
